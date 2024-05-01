@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import logoImg from '../assets/logo.png';
-import AdminDashboard from '../pages/AdminDashboard';
 
 const Navbar = () => {
   const location = useLocation();
@@ -54,48 +53,39 @@ const Navbar = () => {
 
 
             <Link
-              to="/about"
+              to="/dashboard"
               className={
-                isCurrentTab('/about') ? 'font-bold text-white text-lg' : 'transition duration-300 hover:font-bold hover:text-gray-500 hover:text-lg text-lg'
-              }
-            >
-              About
-            </Link>
-            <Link
-              to="/services"
-              className={
-                isCurrentTab('/services') ? 'font-bold text-white text-lg' : 'transition duration-300 hover:font-bold hover:text-gray-500 hover:text-lg text-lg'
-              }
-            >
-              Services
-            </Link>
-            <Link
-              to="/team"
-              className={
-                isCurrentTab('/team') ? 'font-bold text-white text-lg' : 'transition duration-300 hover:font-bold hover:text-gray-500 hover:text-lg text-lg'
-              }
-            >
-              Our Team
-            </Link>
-
-
-
-            <Link
-              to="/admindashboard"
-              className={
-                isCurrentTab('/admindashboard') ? 'font-bold text-white text-lg' : 'transition duration-300 hover:font-bold hover:text-gray-500 hover:text-lg text-lg'
+                isCurrentTab('/dashboard') ? 'font-bold text-white text-lg' : 'transition duration-300 hover:font-bold hover:text-gray-500 hover:text-lg text-lg'
               }
             >
               Dashboard
             </Link>
+            <Link
+              to="/customerrecords"
+              className={
+                isCurrentTab('/customerrecords') ? 'font-bold text-white text-lg' : 'transition duration-300 hover:font-bold hover:text-gray-500 hover:text-lg text-lg'
+              }
+            >
+              Customer Records
+            </Link>
+            <Link
+              to="/transactions"
+              className={
+                isCurrentTab('/transactions') ? 'font-bold text-white text-lg' : 'transition duration-300 hover:font-bold hover:text-gray-500 hover:text-lg text-lg'
+              }
+            >
+              Transactions
+            </Link>
+
+
 
             <Link
-              to="/contact"
+              to="/info"
               className={
                 isCurrentTab('/contact') ? 'font-bold text-white text-lg' : 'transition duration-300 hover:font-bold hover:text-gray-500 hover:text-lg text-lg'
               }
             >
-              Contact
+              Info
             </Link>
           </div>
         </div>
@@ -104,11 +94,10 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="lg:hidden mt-2">
             <Link onClick={toggleMenu} to="/" className="block py-2">Home</Link>
-            <Link onClick={toggleMenu} to="/about" className="block py-2">About</Link>
-            <Link onClick={toggleMenu} to="/services" className="block py-2">Services</Link>
-            <Link onClick={toggleMenu} to="/team" className="block py-2">Doctors</Link>
-            <Link onClick={toggleMenu} to="/admindashboard" className="block py-2">Departments</Link>
-            <Link onClick={toggleMenu} to="/contact" className="block py-2">Contact</Link>
+            <Link onClick={toggleMenu} to="/dashboard" className="block py-2">Dashboard</Link>
+            <Link onClick={toggleMenu} to="/customerrecords" className="block py-2">Customer Records</Link>
+            <Link onClick={toggleMenu} to="/transactions" className="block py-2">Transactions</Link>
+            <Link onClick={toggleMenu} to="/info" className="block py-2">Info</Link>
           </div>
         )}
       </nav>

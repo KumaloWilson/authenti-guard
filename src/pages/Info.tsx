@@ -90,7 +90,7 @@ const serviceData = [
     description: "A surgical procedure for the removal of the foreskin of the penis, with proven health benefits.",
   },
 ];
-const Services = () => {
+const Info = () => {
   const renderServiceCard = serviceData.map((service) => {
     const eventListener = () => {
       alert(`Clicked on ${service.title}`);
@@ -144,6 +144,6 @@ const Services = () => {
 
     </div>
   );
-};
+}
 
-export default Services;
+export default Info

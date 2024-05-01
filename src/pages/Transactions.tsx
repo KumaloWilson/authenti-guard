@@ -21,7 +21,7 @@ const mockDoctors = [
   },
 ];
 
-const Teams = () => {
+const Transactions = () => {
 
   const renderDoctors = mockDoctors.map((project) => (
     <TeamCard
@@ -109,15 +109,10 @@ const Teams = () => {
           {renderDoctors}
         </div>
       </div>
-
-
-
-
-
     </div>
 
 
   )
 }
 
-export default Teams
+export default Transactions

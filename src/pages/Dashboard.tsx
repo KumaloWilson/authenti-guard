@@ -5,7 +5,7 @@ import { animated, useSpring } from "react-spring";
 
 
 
-const AboutUs = () => {
+const Dashboard = () => {
 
 
   const [ref, inView1] = useInView({
@@ -194,4 +194,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default Dashboard;
