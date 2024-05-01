@@ -82,7 +82,7 @@ const Navbar = () => {
             <Link
               to="/info"
               className={
-                isCurrentTab('/contact') ? 'font-bold text-white text-lg' : 'transition duration-300 hover:font-bold hover:text-gray-500 hover:text-lg text-lg'
+                isCurrentTab('/info') ? 'font-bold text-white text-lg' : 'transition duration-300 hover:font-bold hover:text-gray-500 hover:text-lg text-lg'
               }
             >
               Info
