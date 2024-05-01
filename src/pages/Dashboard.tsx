@@ -1,59 +1,17 @@
 import { useInView } from "react-intersection-observer";
 import TypeWriter from "../components/TypeWriter";
 import { animated, useSpring } from "react-spring";
+import { FaBrain, FaClock, FaRobot } from "react-icons/fa";
 
 
 
 
 const Dashboard = () => {
 
-
-  const [ref, inView1] = useInView({
-    triggerOnce: false,
-    threshold: 0.25
-  });
-
-  const [ref1, inView2] = useInView({
-    triggerOnce: false,
-    threshold: 0.5
-  });
-
-  const [ref2, inView3] = useInView({
-    triggerOnce: false,
-    threshold: 0.75
-  });
-
-  const [ref3, inView4] = useInView({
-    triggerOnce: false,
-    threshold: 1.0
-  });
-
-  const fadeIn = useSpring({
-    opacity: inView1 ? 1 : 0,
-    from: { opacity: 0 },
-  });
-
-  const fadeIn1 = useSpring({
-    opacity: inView2 ? 1 : 0,
-    from: { opacity: 0 },
-  });
-
-  const fadeIn2 = useSpring({
-    opacity: inView3 ? 1 : 0,
-    from: { opacity: 0 },
-  });
-
-  const fadeIn3 = useSpring({
-    opacity: inView4 ? 1 : 0,
-    from: { opacity: 0 },
-  });
-
-
-
   return (
     <div className=" flex flex-col items-center bg-white">
       <div className="text-center mt-20">
-        <h2 className="text-4xl font-extrabold text-black">ABOUT <span className="text-blue-700">US</span></h2>
+        <h2 className="text-4xl font-extrabold text-black">DASH<span className="text-blue-700">BOARD</span></h2>
       </div>
 
       <div className="mt-4">
@@ -62,130 +20,84 @@ const Dashboard = () => {
 
 
       <div className="bg-white  px-72 py-40">
-        <h1 className="text-blue-700 text-2xl font-bold mb-4">
-          Lorem Ipsum
-        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Feature 1 */}
+          <div className="features-box bg-blue-900 text-white py-12 px-8">
+            <div className='flex justify-between'>
 
-        <animated.div style={fadeIn}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 place-content-center gap-8 pt-4 justify-center items-center" ref={ref}>
+              <FaRobot size={50} className='mb-4 text-white items-start' />
 
-            <div>
-              <p className="text-black">
-                I am currently studying a Bachelor's Degree in Information Technology at Chinhoyi University of Technology. As a IT student, I have had the opportunity to explore several fields of specialty and I have gained experience with a variety of Technologies.
 
-                I have also developed strong problem solving skills, communication skills, attention to detail, and the ability to work effectively in a team environment. I am also highly organized and able to manage multiple tasks simultaneously.
-
-                I am passionate about using my skills and knowledge to contribute to the success of any organization I am a part of. In my free time, I enjoy coding, reading books related to my field and attending industry conferences to stay up-to-date with the latest trends and technologies.
-
-                Thank you for considering me for any potential opportunities. I look forward to discussing how I can add value to your organization.
-              </p>
+              <h3 className="text-7xl font-extrabold mb-4">200</h3>
 
             </div>
-
-
-            <div className="w-1/2 mx-auto border-blue-500 border-8">
-              <img className="h-100 w-full" src="https://avatars.githubusercontent.com/u/60302385?v=4" alt="Profile" />
-            </div>
-
+            <p className="text-base">Detect fraudulent transactions with precision using Random Forest algorithms, providing accurate results and enhanced security measures.</p>
           </div>
+          {/* Feature 2 */}
+          <div className="features-box bg-blue-800 text-white py-12 px-8">
+            <div className='flex justify-between'>
 
-        </animated.div>
-      </div>
-
-
-      <div className="bg-gray-300  px-72 py-40">
-        <h1 className="text-blue-700 text-2xl font-bold mb-4 text-right">
-          Lorem Ipsum
-        </h1>
-
-        <animated.div style={fadeIn1}>
-          <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 place-content-center gap-8 pt-4 justify-center items-center" ref={ref1}>
+              <FaRobot size={50} className='mb-4 text-white items-start' />
 
 
-            <div className="w-1/2 mx-auto border-blue-500 bg-opacity-75 border-8">
-              <img className="h-100 w-full" src="https://avatars.githubusercontent.com/u/60302385?v=4" alt="Profile" />
-            </div>
-
-            <div>
-              <p className="text-black text-right">
-                I am currently studying a Bachelor's Degree in Information Technology at Chinhoyi University of Technology. As a IT student, I have had the opportunity to explore several fields of specialty and I have gained experience with a variety of Technologies.
-
-                I have also developed strong problem solving skills, communication skills, attention to detail, and the ability to work effectively in a team environment. I am also highly organized and able to manage multiple tasks simultaneously.
-
-                I am passionate about using my skills and knowledge to contribute to the success of any organization I am a part of. In my free time, I enjoy coding, reading books related to my field and attending industry conferences to stay up-to-date with the latest trends and technologies.
-
-                Thank you for considering me for any potential opportunities. I look forward to discussing how I can add value to your organization.
-              </p>
+              <h3 className="text-7xl font-extrabold mb-4">200</h3>
 
             </div>
-
+            <p className="text-base">Leverage the power of Artificial Neural Networks to uncover hidden patterns and anomalies in transaction data, enabling advanced fraud detection and prevention capabilities.</p>
           </div>
+          {/* Feature 3 */}
+          <div className="features-box bg-blue-700 text-white py-12 px-8">
+            <div className='flex justify-between'>
 
-        </animated.div>
-      </div>
+              <FaRobot size={50} className='mb-4 text-white items-start' />
 
 
-      <div className="bg-white  px-72 py-40">
-        <h1 className="text-blue-700 text-2xl font-bold mb-4">
-          Lorem Ipsum
-        </h1>
-
-        <animated.div style={fadeIn2}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 place-content-center gap-8 pt-4 justify-center items-center" ref={ref2}>
-
-            <div>
-              <p className="text-black">
-                I am currently studying a Bachelor's Degree in Information Technology at Chinhoyi University of Technology. As a IT student, I have had the opportunity to explore several fields of specialty and I have gained experience with a variety of Technologies.
-
-                I have also developed strong problem solving skills, communication skills, attention to detail, and the ability to work effectively in a team environment. I am also highly organized and able to manage multiple tasks simultaneously.
-
-                I am passionate about using my skills and knowledge to contribute to the success of any organization I am a part of. In my free time, I enjoy coding, reading books related to my field and attending industry conferences to stay up-to-date with the latest trends and technologies.
-
-                Thank you for considering me for any potential opportunities. I look forward to discussing how I can add value to your organization.
-              </p>
+              <h3 className="text-7xl font-extrabold mb-4">200</h3>
 
             </div>
-
-
-            <div className="w-1/2 mx-auto border-blue-500 border-8">
-              <img className="h-100 w-full" src="https://avatars.githubusercontent.com/u/60302385?v=4" alt="Profile" />
-            </div>
-
+            <p className="text-base">Stay ahead of fraudulent activity with our lightning-fast detection system, analyzing transactions in real-time to identify and prevent financial losses before they occur.</p>
           </div>
-
-        </animated.div>
-      </div>
+        </div>
 
 
-      <div className="bg-gray-300  px-72 py-40">
-        <h1 className="text-blue-700 text-2xl font-bold mb-4 text-right">
-          Lorem Ipsum
-        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+          {/* Feature 1 */}
+          <div className="features-box bg-blue-900 text-white py-12 px-8">
+            <div className='flex justify-between'>
 
-        <animated.div style={fadeIn3}>
-          <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 place-content-center gap-8 pt-4 justify-center items-center" ref={ref3}>
+              <FaRobot size={50} className='mb-4 text-white items-start' />
 
 
-            <div className="w-1/2 mx-auto border-blue-500 bg-opacity-75 border-8">
-              <img className="h-100 w-full" src="https://avatars.githubusercontent.com/u/60302385?v=4" alt="Profile" />
-            </div>
-
-            <div>
-              <p className="text-black text-right">
-                I am currently studying a Bachelor's Degree in Information Technology at Chinhoyi University of Technology. As a IT student, I have had the opportunity to explore several fields of specialty and I have gained experience with a variety of Technologies.
-
-                I have also developed strong problem solving skills, communication skills, attention to detail, and the ability to work effectively in a team environment. I am also highly organized and able to manage multiple tasks simultaneously.
-
-                I am passionate about using my skills and knowledge to contribute to the success of any organization I am a part of. In my free time, I enjoy coding, reading books related to my field and attending industry conferences to stay up-to-date with the latest trends and technologies.
-
-                Thank you for considering me for any potential opportunities. I look forward to discussing how I can add value to your organization.
-              </p>
+              <h3 className="text-7xl font-extrabold mb-4">200</h3>
 
             </div>
-
+            <p className="text-base">Detect fraudulent transactions with precision using Random Forest algorithms, providing accurate results and enhanced security measures.</p>
           </div>
+          {/* Feature 2 */}
+          <div className="features-box bg-blue-800 text-white py-12 px-8">
+            <div className='flex justify-between'>
 
-        </animated.div>
+              <FaRobot size={50} className='mb-4 text-white items-start' />
+
+
+              <h3 className="text-7xl font-extrabold mb-4">200</h3>
+
+            </div>
+            <p className="text-base">Leverage the power of Artificial Neural Networks to uncover hidden patterns and anomalies in transaction data, enabling advanced fraud detection and prevention capabilities.</p>
+          </div>
+          {/* Feature 3 */}
+          <div className="features-box bg-blue-700 text-white py-12 px-8">
+            <div className='flex justify-between'>
+
+              <FaRobot size={50} className='mb-4 text-white items-start' />
+
+
+              <h3 className="text-7xl font-extrabold mb-4">200</h3>
+
+            </div>
+            <p className="text-base">Stay ahead of fraudulent activity with our lightning-fast detection system, analyzing transactions in real-time to identify and prevent financial losses before they occur.</p>
+          </div>
+        </div>
       </div>
 
 

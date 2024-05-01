@@ -23,7 +23,7 @@ function App() {
           <Route path="/verify-email" element={<EmailVerification />} />
           <Route path="/" element={<Home />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="/customerrrecords" element={<CustomerRecords />} />
+          <Route path="/customerrecords" element={<CustomerRecords />} />
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/info" element={<Info />} />
         </Routes>

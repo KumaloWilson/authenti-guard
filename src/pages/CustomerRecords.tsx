@@ -1,147 +1,122 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { FaEye, FaEdit, FaTrash, FaFileExcel, FaSearch } from 'react-icons/fa';
+import * as XLSX from 'xlsx';
 
-import bgImg from '../assets/nursesbg1.jpeg';
-import dpImage from '../assets/dp.jpeg'
-import { FaAmbulance, FaHospital, FaStethoscope, FaUserMd, FaMedkit, FaMicroscope, FaHeartbeat, FaBed, FaTooth, FaRadiationAlt, FaLungs, FaBaby, FaUserPlus, FaVenusMars } from "react-icons/fa";
-import ServicesCard from "../components/ServicesCard";
+interface Customer {
+  customer_id: string;
+  name: string;
+  email_address: string;
+  address: string;
+  phone_number: string;
+}
 
-const serviceData = [
-  {
-    id: 1,
-    icon: <FaAmbulance size={100} />,
-    title: "Emergency Care",
-    description: "24/7 emergency medical services for critical conditions and injuries.",
-  },
-  {
-    id: 2,
-    icon: <FaHospital size={100} />,
-    title: "Inpatient Services",
-    description: "Comprehensive care for patients requiring hospitalization and medical treatment.",
-  },
-  {
-    id: 3,
-    icon: <FaStethoscope size={100} />,
-    title: "Outpatient Care",
-    description: "Medical services provided without the need for overnight hospitalization.",
-  },
-  {
-    id: 4,
-    icon: <FaUserMd size={100} />,
-    title: "Specialty Clinics",
-    description: "Dedicated clinics for specialized medical care in various fields like cardiology, neurology, etc.",
-  },
-  {
-    id: 5,
-    icon: <FaMedkit size={100} />,
-    title: "Pharmacy Services",
-    description: "Dispensing medications and providing pharmaceutical consultation and advice.",
-  },
-  {
-    id: 6,
-    icon: <FaMicroscope size={100} />,
-    title: "Diagnostic Imaging",
-    description: "State-of-the-art imaging services including X-rays, MRI, CT scans, and ultrasounds.",
-  },
-  {
-    id: 7,
-    icon: <FaHeartbeat size={100} />,
-    title: "Cardiac Care",
-    description: "Specialized care for patients with heart conditions, including diagnosis and treatment.",
-  },
-  {
-    id: 8,
-    icon: <FaBed size={100} />,
-    title: "Rehabilitation Services",
-    description: "Therapeutic services to help patients recover from injuries or surgeries and improve mobility.",
-  },
-  {
-    id: 9,
-    icon: <FaTooth size={100} />,
-    title: "Dental Services",
-    description: "Comprehensive dental care including checkups, cleanings, and treatments.",
-  },
-  {
-    id: 10,
-    icon: <FaRadiationAlt size={100} />,
-    title: "X-ray Imaging",
-    description: "Diagnostic imaging using X-rays to visualize internal structures and diagnose medical conditions.",
-  },
-  {
-    id: 11,
-    icon: <FaLungs size={100} />,
-    title: "TB Clinic",
-    description: "Specialized clinic for diagnosis, treatment, and management of tuberculosis (TB).",
-  },
-  {
-    id: 12,
-    icon: <FaBaby size={100} />,
-    title: "Maternity Care",
-    description: "Comprehensive care for expectant mothers, including prenatal, delivery, and postnatal services.",
-  },
-  {
-    id: 13,
-    icon: <FaVenusMars size={100} />,
-    title: "VIAC (Visual Inspection with Acetic Acid)",
-    description: "Screening method for detecting abnormalities in the female genitals, particularly for cervical cancer prevention.",
-  },
-  {
-    id: 14,
-    icon: <FaUserPlus size={100} />,
-    title: "Voluntary Male Circumcision",
-    description: "A surgical procedure for the removal of the foreskin of the penis, with proven health benefits.",
-  },
-];
 const CustomerRecords = () => {
-  const renderServiceCard = serviceData.map((service) => {
-    const eventListener = () => {
-      alert(`Clicked on ${service.title}`);
+  const [customers, setEmployees] = useState<Customer[]>([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const response = await axios.get('https://st-josephs-employee-database.onrender.com/employees', {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        setEmployees(response.data);
+      } catch (error) {
+        console.error('Error fetching employees:', error);
+      }
     };
 
-    return (
-      <ServicesCard
-        key={service.id}
-        icon={service.icon}
-        title={service.title}
-        description={service.description}
-        onClick={eventListener}
-      />
-    );
-  });
+    fetchEmployees();
+  }, []);
+
+  const handleViewEmployee = (id: string) => {
+    // Logic to view employee details
+  };
+
+  const handleDeleteEmployee = (id: string) => {
+    // Logic to delete employee
+  };
+
+  const handleExportToExcel = () => {
+    const flattenedData = customers.map(customer => {
+      return {
+        Name: customer.name,
+        ID: customer.customer_id,
+        Email: customer.email_address,
+        Address: customer.address,
+        Phone: customer.phone_number,
+      };
+    });
+
+    const worksheet = XLSX.utils.json_to_sheet(flattenedData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Employees');
+    XLSX.writeFile(workbook, 'employees.xlsx');
+  };
+
+
+  const filteredEmployees = customers.filter(employee =>
+    employee.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div>
-      <div className="flex flex-col items-center bg-gray-200 px-72">
-        <div className="text-center mt-20">
-          <h2 className="text-4xl font-extrabold text-black">OUR <span className="text-blue-700">SERVICES</span></h2>
+    <div className="px-72 py-8 bg-white">
+      <h1 className="text-3xl font-bold mb-6">Customers List</h1>
+      <div className="flex justify-between items-center mb-4">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search by name..."
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+            className="border border-blue-300 rounded py-2 px-4 pr-10 w-full"
+          />
+          <FaSearch className="absolute right-3 top-3 text-blue-500" />
         </div>
-        <div className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {renderServiceCard}
-        </div>
+        <button
+          onClick={handleExportToExcel}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center"
+        >
+          <FaFileExcel className="mr-2" />
+          Export to Excel
+        </button>
       </div>
-
-      <div className="hero-banner py-72 relative"
-        style={{
-          backgroundImage: `url(${bgImg})`,
-          backgroundSize: 'fit',
-          backgroundPosition: 'center',
-        }}>
-        <div className='absolute inset-0 bg-blue-900 bg-opacity-80 py-24 px-72'>
-          <div className="container mx-auto flex flex-col">
-            <h1 className="text-white text-5xl my-8 font-extrabold text-center">Customer Reviews</h1>
-            <div className='w-full flex justify-center'>
-              <img src={dpImage} alt="Your Name" className="rounded-full w-40 h-40 mb-4" />
-            </div>
-            <p className="text-white text-lg mb-8 text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-
-
-            <h1 className="text-white text-2xl font-extrabold text-center">Munyaradzi Magodo</h1>
-
-          </div>
-
-
-
-        </div>
-      </div>
-
+      <table className="table-auto w-full">
+        <thead>
+          <tr className="bg-blue-500 text-white">
+            <th className="px-4 py-2">ID</th>
+            <th className="px-4 py-2">Name</th>
+            <th className="px-4 py-2">Email</th>
+            <th className="px-4 py-2">Address</th>
+            <th className="px-4 py-2">Phone</th>
+            <th className="px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredEmployees.map((customer, index) => (
+            <tr key={customer.customer_id} className={index % 2 === 0 ? 'bg-blue-100' : 'bg-white'}>
+              <td className="px-4 py-2">{customer.customer_id}</td>
+              <td className="px-4 py-2">{customer.name}</td>
+              <td className="px-4 py-2">{customer.email_address}</td>
+              <td className="px-4 py-2">{customer.address}</td>
+              <td className="px-4 py-2">{customer.phone_number}</td>
+              <td className="px-4 py-2 flex justify-between items-center">
+                <FaEye
+                  className="text-blue-500 cursor-pointer hover:text-blue-700 mr-2"
+                  onClick={() => handleViewEmployee(customer.customer_id)}
+                />
+                <FaTrash
+                  className="text-red-500 cursor-pointer hover:text-red-700 mr-2"
+                  onClick={() => handleDeleteEmployee(customer.customer_id)}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
