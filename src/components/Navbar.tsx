@@ -28,7 +28,7 @@ const Navbar = () => {
               <div className='bg-white mr-4 p-2 rounded-lg'>
                 <img src={logoImg} alt="logo" className="w-20 h-20" />
               </div>
-              <h1 className="text-2xl font-bold mb-2 text-white">St Joseph's Mission Hospital</h1>
+              <h1 className="text-2xl font-bold mb-2 text-white">Authenti Guard</h1>
             </div>
           </Link>
 
@@ -77,16 +77,6 @@ const Navbar = () => {
               Transactions
             </Link>
 
-
-
-            <Link
-              to="/info"
-              className={
-                isCurrentTab('/info') ? 'font-bold text-white text-lg' : 'transition duration-300 hover:font-bold hover:text-gray-500 hover:text-lg text-lg'
-              }
-            >
-              Info
-            </Link>
           </div>
         </div>
 
@@ -97,7 +87,6 @@ const Navbar = () => {
             <Link onClick={toggleMenu} to="/dashboard" className="block py-2">Dashboard</Link>
             <Link onClick={toggleMenu} to="/customerrecords" className="block py-2">Customer Records</Link>
             <Link onClick={toggleMenu} to="/transactions" className="block py-2">Transactions</Link>
-            <Link onClick={toggleMenu} to="/info" className="block py-2">Info</Link>
           </div>
         )}
       </nav>

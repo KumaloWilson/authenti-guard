@@ -1,5 +1,5 @@
 import { FaBrain, FaClock, FaRobot, } from 'react-icons/fa';
-import bgImg from '../assets/nursesbg1.jpeg';
+import bgImg from '../assets/nursesbg1.jpg';
 import Button from '../components/Button';
 
 const Home = () => {

@@ -10,7 +10,7 @@ const Footer = () => {
                 <i className="fa fa-map-marker mr-2" aria-hidden="true"></i>
                 <div>
                   <h4 className="font-extrabold text-lg">Address</h4>
-                  <p>3186 Paulington Road <br />Sakubva <br /> Mutare <br /> Zimbabwe</p>
+                  <p>20792 Nqobile Road <br />Pumula <br /> Bulawayo <br /> Zimbabwe</p>
                 </div>
               </li>
               <li className="flex items-center mb-4">
@@ -25,7 +25,7 @@ const Footer = () => {
                 <div>
 
                   <h4 className="font-extrabold text-lg">Email Address</h4>
-                  <p><a href="mailto:stjosephshosp@gmail.com">stjosephshosp@gmail.com</a></p>
+                  <p><a href="mailto:stjosephshosp@gmail.com">detecit@detectmail.com</a></p>
                 </div>
               </li>
             </ul>
@@ -34,17 +34,16 @@ const Footer = () => {
           <div className="footer-widget">
             <h3 className="text-2xl font-extrabold mb-4">SERVICES</h3>
             <ul className="footer-menu">
-              <li><a href="#">Neurology</a></li>
-              <li><a href="#">Eyes care</a></li>
-              <li><a href="#">Pulmonary</a></li>
-              <li><a href="#">Cardiology</a></li>
-              <li><a href="#">Dental Care</a></li>
-              <li><a href="#">Hepatology</a></li>
+              <li><a href="#">Fraud Detection</a></li>
+              <li><a href="#">Random Forest</a></li>
+              <li><a href="#">Artficial Neural Network</a></li>
+              <li><a href="#">Real Time Detection</a></li>
+              <li><a href="/test">Test It</a></li>
             </ul>
           </div>
         </div>
         <div className="mt-16 text-center">
-          <p>&copy; 2024 St Joseph's Mission Hospital. All rights reserved.</p>
+          <p>&copy; 2024 DetectIt. All rights reserved.</p>
         </div>
       </div>
     </footer>
