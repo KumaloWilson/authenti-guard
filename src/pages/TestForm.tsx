@@ -146,20 +146,20 @@ const PredictionForm: React.FC = () => {
             setShowResponse(false);
 
             const fraudData = {
-                "Transaction ID": randomIP,
-                "Customer ID": "d1b87f62-51b2-493b-ad6a-77e0fe13e785",
+                "Transaction ID": randomUUID,
+                "Customer ID": "efe65ee9-307f-4b8e-ab7f-3aab23217d83",
                 "Shipping Address": formData['Shipping Address'],
-                "Billing Address": formData['Shipping Address'],
+                "Billing Address": formData['Billing Address'],
                 "IP Address": randomIP,
                 "Transaction Amount": formData['Transaction Amount'],
                 "Transaction Date": "01/05/2024 13:58",
                 "Payment Method": "credit card",
-                "Product Category": "electronics",
+                "Product Category": "clothing",
                 "Quantity": formData['Quantity'],
                 "Customer Age": formData['Customer Age'],
                 "Customer Location": formData['Customer Location'],
                 "Device Used": "desktop",
-                "Account Age Days": 67
+                "Account Age Days": 100
             }
 
             const response = await axios.post(API_URL, fraudData, {
